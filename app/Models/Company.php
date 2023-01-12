@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Company extends Model
 {
     use HasFactory;
+
+    public function coins(){
+        return $this->hasOne(Wallet::class, 'company_id', 'id');
+    }
 }
