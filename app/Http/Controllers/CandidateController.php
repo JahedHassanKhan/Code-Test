@@ -48,8 +48,7 @@ class CandidateController extends Controller
     public function hire(Request $request){
         $candidate = Candidate::find($request->id);
         $company = Company::find(1);
-        $contact = $candidate->companies->find($candidate->id);
-        if ($contact){
+        if ($candidate->companies->find($candidate->id)){
             if ($candidate->isHired ==  null){
                 $candidate->isHired =   true;
                 $candidate->update();
@@ -68,7 +67,6 @@ class CandidateController extends Controller
             $message = 'You have not contact the candidate yet';
             return \response($message);
         }
-        return \response($contact);
         // @todo
         // Your code goes here...
     }
